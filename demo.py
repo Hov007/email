@@ -44,7 +44,8 @@ def get_file_data(message_id, attachment_id, file_name, save_location):
     response = service.users().messages().attachments().get(
         userId='me',
         messageId=message_id,
-        id=attachment_id
+        id=attachment_id,
+        file_name=file_name
     ).execute()
 
     file_data = base64.urlsafe_b64decode(response.get('data').encode('UTF-8'))
